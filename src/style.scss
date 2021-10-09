@@ -1,0 +1,212 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+/*下面是解决ios上去除微信点击蓝色边框 */
+a:focus,
+input:focus,
+p:focus,
+div:focus {
+  -webkit-user-modify: read-write-plaintext-only;
+}
+
+.icon {
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+  background-color: white;
+  touch-action: none;
+}
+
+#drawing-board {
+  display: block;
+  cursor: crosshair;
+}
+
+.hide {
+  display: none;
+}
+
+// 工具栏
+.tools {
+  position: fixed;
+  left: 0;
+  bottom: 8px;
+  width: 100%;
+  display: flex;
+  background-color: white;
+  justify-content: center;
+  text-align: center;
+
+  > button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background-color: white;
+    margin: 0 10px;
+    transition: 0.3s;
+
+    &.active,
+    &:active {
+      background-color: #eee;
+      color: red;
+    }
+
+    > svg {
+      width: 30px;
+      height: 30px;
+    }
+  }
+}
+
+// 颜色组
+.color-group {
+  position: fixed;
+  width: 30px;
+  left: 30px;
+  top: 50%;
+  transform: translate(0, -150px);
+
+  > ul {
+    list-style: none;
+
+    > li {
+      width: 25px;
+      height: 25px;
+      margin: 10px 0;
+      border-radius: 50%;
+      box-sizing: border-box;
+      cursor: pointer;
+      transition: 0.3s;
+
+      &.active {
+        box-shadow: 0 0 0 5px #ebebeb;
+        animation: selectAni ease-in 0.3s;
+      }
+      @keyframes selectAni {
+        0% {
+          transform: scale(1.2);
+        }
+        33% {
+          transform: scale(1.4);
+        }
+        66% {
+          transform: scale(1.1);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+    }
+  }
+}
+
+// 范围
+#range-wrap {
+  position: fixed;
+  top: 50%;
+  right: 30px;
+  width: 30px;
+  height: 150px;
+  margin-top: -75px;
+
+  > input {
+    transform: rotate(-90deg);
+    width: 150px;
+    height: 20px;
+    margin: 0;
+    transform-origin: 75px 75px;
+    border-radius: 15px;
+    -webkit-appearance: none;
+    outline: none;
+    position: relative;
+
+    &::after {
+      display: block;
+      content: "";
+      width: 0;
+      height: 0;
+      border: 5px solid transparent;
+      border-right: 150px solid #d7d7d7;
+      border-left-width: 0;
+      position: absolute;
+      left: 0;
+      top: 5px;
+      border-radius: 15px;
+      z-index: 0;
+    }
+
+    &[type="range"]::-webkit-slider-thumb,
+    &[type="range"]::-moz-range-thumb {
+      -webkit-appearance: none;
+    }
+
+    &[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      height: 20px;
+      width: 20px;
+      margin-top: -1px;
+      background: white;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #ebebeb;
+      cursor: pointer;
+      position: relative;
+      z-index: 10;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .tools {
+    top: 0;
+    bottom: auto;
+    padding: 5px;
+
+    > button {
+      width: 40px;
+      height: 40px;
+
+      > svg {
+        width: 30px;
+        height: 30px;
+      }
+    }
+  }
+
+  .color-group {
+    left: 0;
+    top: auto;
+    bottom: 10px;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    transform: translate(0, 0);
+
+    > ul {
+      > li {
+        display: inline-block;
+        margin: 0 5px;
+      }
+    }
+  }
+
+  #range-wrap {
+    left: auto;
+    right: 5px;
+  }
+}

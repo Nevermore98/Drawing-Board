@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <title>涂鸦画板</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="style.b3ef4425.css" type="text/css">
+  <script src="//at.alicdn.com/t/font_2851334_i118j641yxh.js"></script>
+</head>
+
+<body>
+  <canvas id="drawing-board" width="100" height="100"></canvas>
+  <div class="color-group">
+    <ul>
+      <li id="black" class="color-item active" style="background-color: black;"></li>
+      <li id="red" class="color-item" style="background-color: #FF0D00;"></li>
+      <li id="blue" class="color-item" style="background-color: #0066FF;"></li>
+      <li id="yellow" class="color-item" style="background-color: #FFFF10;"></li>
+      <li id="green" class="color-item" style="background-color: #79EF5D;"></li>
+      <li id="gray" class="color-item" style="background-color:	#C0C0C0;"></li>
+    </ul>
+  </div>
+
+  <div id="range-wrap">
+    <input type="range" id="range" min="1" max="30" value="5" title="调整笔刷粗细">
+  </div>
+  <div class="tools">
+
+    <button id="highlighter" title="笔" class="tool active">
+      <svg class="icon">
+        <use xlink:href="#icon-pen"></use>
+      </svg>
+    </button>
+
+    <button id="eraser" title="橡皮擦" class="tool">
+      <svg class="icon">
+        <use xlink:href="#icon-eraser"></use>
+      </svg>
+    </button>
+
+    <button id="clear" title="清空">
+      <svg class="icon">
+        <use xlink:href="#icon-clear"></use>
+      </svg>
+    </button>
+
+    <button id="undo" title="撤销">
+      <svg class="icon">
+        <use xlink:href="#icon-undo"></use>
+      </svg>
+    </button>
+
+    <!--TODO-->
+    <!--<button id="redo" title="重做">-->
+    <!--  <svg class="icon">-->
+    <!--    <use xlink:href="#icon-redo"></use>-->
+    <!--  </svg>-->
+    <!--</button>-->
+
+    <button id="save" title="保存">
+      <svg class="icon">
+        <use xlink:href="#icon-save"></use>
+      </svg>
+    </button>
+  </div>
+</body>
+
+<script src="canvas.7ec15fbb.js"></script>
+<script src="main.8c71a2ab.js"></script>
+
+</html>
